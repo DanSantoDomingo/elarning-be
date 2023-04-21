@@ -4,6 +4,8 @@ from lessons import models
 from django import forms
 from ckeditor.widgets import CKEditorWidget
 
+admin.site.site_url = None
+
 
 class LessonAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorWidget())

@@ -1,0 +1,9 @@
+{% extends "admin/base_site.html" %} 
+{% block title %} ADMIN {% endblock title%} 
+{% block branding %}
+<h1 id="site-name">
+    <a id="nav-title" href="{% url 'admin:index' %}">
+        Control Panel
+    </a>
+</h1>
+{% endblock %}
