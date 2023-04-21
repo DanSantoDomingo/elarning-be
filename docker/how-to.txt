@@ -1,0 +1,17 @@
+docker build -t django-docker -f docker/Dockerfile .
+
+docker run -p 8000:8000 django-docker
+docker run -p 8000:8000 django-docker docker/start_django.sh
+
+# AWS
+docker build -t 198193585440.dkr.ecr.ap-northeast-1.amazonaws.com/test-django -f docker/Dockerfile .
+docker push 198193585440.dkr.ecr.ap-northeast-1.amazonaws.com/test-django
+
+docker run -p 8000:8000 198193585440.dkr.ecr.ap-northeast-1.amazonaws.com/test-django docker/start_django.sh
+
+
+aws ecs deregister-task-definition --task-definition task_defination_name:revision_no
+aws ecs deregister-task-definition --task-definition test-django-task:3
+
+# GITLAB
+variables must be unprotected
