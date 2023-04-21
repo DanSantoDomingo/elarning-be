@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tinymce",
+    "ckeditor",
+    "ckeditor_uploader",
     "lessons",
 ]
 
@@ -113,13 +114,21 @@ USE_I18N = True
 
 USE_TZ = True
 
+DISABLE_DARK_MODE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
-
+STATIC_ROOT = "static"
+MEDIA_URL = "media/"
+MEDIA_ROOT = "media"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# CKEDITOR app settings
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = "ckeditor/uploads/"
+CKEDITOR_FILENAME_GENERATOR = "utils.get_filename"
