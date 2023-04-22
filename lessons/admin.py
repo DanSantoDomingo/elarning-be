@@ -17,3 +17,4 @@ class LessonAdminForm(forms.ModelForm):
 @admin.register(models.Lesson)
 class LessonAdmin(admin.ModelAdmin):
     form = LessonAdminForm
+    list_display = ["title", "created", "modified"]
