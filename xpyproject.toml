@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Dan Sto. Domingo <danielesto.domingo@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "^4.2"
+django-ckeditor = "^6.5.1"
+gunicorn = "^20.1.0"
+whitenoise = "^6.4.0"
+
+[tool.mypy]
+python_version="3.9"
+show_traceback=true
+ignore_missing_imports=true
+plugins="mypy_django_plugin.main"
+strict_optional=true
+disallow_incomplete_defs=true
+no_warn_no_return=true
+no_incremental=true
+exclude = ["venv", "lessons/migrations"]
+
+[tool.django-stubs]
+django_settings_module="backend.settings"
+
+[tool.poetry.group.dev.dependencies]
+pre-commit = "^3.2.2"
+django-stubs = "^1.16.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -10,6 +10,8 @@ class TimeStampedModel(models.Model):
 
 class Lesson(TimeStampedModel):
     title = models.CharField(max_length=256, unique=True)
+    slug = models.CharField(max_length=512, unique=True, blank=True)
+    image_url = models.URLField(blank=True, max_length=1024)
     content = RichTextUploadingField()
 
     def __str__(self) -> str:

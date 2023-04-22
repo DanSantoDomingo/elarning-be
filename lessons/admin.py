@@ -44,6 +44,7 @@ class LessonAdmin(admin.ModelAdmin):
     form = LessonAdminForm
     list_display = ["title", "created", "modified"]
     inlines = [QuestionInline]
+    prepopulated_fields = {"slug": ["title"]}
 
 
 @admin.register(models.Question)
