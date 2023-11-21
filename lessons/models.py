@@ -1,6 +1,9 @@
+import re
+
 from django.db import models
 from django.utils.html import strip_tags
 from ckeditor_uploader.fields import RichTextUploadingField
+
 
 class TimeStampedModel(models.Model):
     class Meta:
@@ -20,7 +23,10 @@ class Lesson(TimeStampedModel):
         return self.title
     
     def save(self, *args, **kwargs):
-        self.stripped_content = strip_tags(self.content)
+        text = strip_tags(self.content)
+        # pattern = r'\\[rnt]|&nbsp;|&frac12;|&frac\d+;|&mdash;'
+        pattern = r'\\[rnt]|&nbsp;|&mdash;'
+        self.stripped_content = re.sub(pattern, '', text)
         super(Lesson, self).save(*args, **kwargs)
 
 
